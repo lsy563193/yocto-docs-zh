@@ -2,20 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>yocto笔记</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
+  <meta name="description" content="yocto笔记">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app">加载中...</div>
   <script>
     window.$docsify = {
-      name: '',
-      repo: ''
+      name: 'yocto 中文',
+      homepage: 'README.md',
+      repo: 'lsy563193/yocto',
+      loadSidebar: true,
+      subMaxLevel: 5,
+      themeColor: '#3F51B5',
+      executeScript: true,
+      auto2top: true,
+      search: {
+        placeholder: '搜索'
+      },
+      plugins: [
+        function(hook, vm) {
+          hook.doneEach(function(html, next) {
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            MathJax.Hub.Config({
+              tex2jax: {
+                inlineMath: [ ['$', '$'] ],
+                displayMath: [ ['$$', '$$']]
+              }
+            });
+          })
+        }
+      ]
     }
   </script>
+  <script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/external-script.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
 </body>
 </html>
